@@ -1,0 +1,62 @@
+[
+  {
+    "kernelSource": {
+      "name": "Mix2S",
+      "repo": "https://github.com/bilcb/kernel_xiaomi_sdm845",
+      "branch": "bka",
+      "device": "polaris",
+      "defconfig": "vendor/xiaomi/mi845_defconfig"
+    },
+    "toolchains": [
+      {
+        "name": "Clang",
+        "url": "https://github.com/bilcb/tc-build/releases/download/clang-20.1.7/clang.tar.gz",
+        "binaryEnv": ["bin"]
+      }
+    ],
+    "enableCcache": true,
+    "params": {
+      "ARCH": "arm64",
+      "CC": "clang",
+      "externalCommands": {
+        "CLANG_TRIPLE": "aarch64-linux-gnu-",
+        "CROSS_COMPILE": "aarch64-linux-gnu-",
+        "CROSS_COMPILE_ARM32": "arm-linux-gnueabi-",
+        "LD": "ld.lld",
+        "AR": "llvm-ar",
+        "NM": "llvm-nm",
+        "OBJCOPY": "llvm-objcopy",
+        "OBJDUMP": "llvm-objdump",
+        "READELF": "llvm-readelf",
+        "OBJSIZE": "llvm-size",
+        "STRIP": "llvm-strip",
+        "HOSTCC": "clang",
+        "HOSTCXX": "clang++",
+        "LLVM_AR": "llvm-ar",
+        "LLVM_DIS": "llvm-dis",
+        "LLVM": "1",
+        "LLVM_IAS": "1"
+      }
+    },
+      "extraconfig": [
+        "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_CORE_FORCE=y",
+        "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_RMI_DEV_FORCE=y",
+        "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_FW_UPDATE_FORCE=y",
+        "CONFIG_SECURE_TOUCH=y",
+        "CONFIG_TOUCHSCREEN_FT5X46_I2C=y",
+        "CONFIG_FINGERPRINT_FPC_TEE=y",
+        "CONFIG_FINGERPRINT_GOODIX_TA=y",
+        "CONFIG_IDT_P9220=y",
+        "CONFIG_SND_SOC_TAS2559=y",
+        "CONFIG_MACH_XIAOMI_D5X=y",
+        "CONFIG_LTO_CLANG=y"
+      ],
+    "AnyKernel3": {
+      "use": true,
+      "release": true
+    },
+    "enableExtraconfig": true,
+    "enableKernelSU": false,
+    "enableLXC": false
+  }
+]
